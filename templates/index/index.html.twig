@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <h1>Advent Calendar 2020</h1>
+
+    <h4>Results :</h4>
+    <table class="table table-striped">
+        <thead>
+            <th>Day</th>
+            <th>First Puzzle</th>
+            <th>Second Puzzle</th>
+        </thead>
+        <tbody>
+        {% for day, result in days_results %}
+            <tr>
+                <td>{{ day }}</td>
+                <td>{{ result['first_puzzle']}}</td>
+                <td>{{ result['second_puzzle']}}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
