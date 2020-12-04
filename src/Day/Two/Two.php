@@ -12,7 +12,7 @@ class Two extends AbstractDay
     {
         $handle = fopen(__DIR__ . '/data.txt', 'rb+');
         while ($line = fgets($handle)) {
-            $this->inputData[] = $line;
+            $this->inputData[] = trim($line);
         }
     }
 
@@ -23,7 +23,7 @@ class Two extends AbstractDay
             [$rule, $char, $string] = explode(' ', $line);
 
             $char = str_replace(':', '', $char);
-            $string = str_split(preg_replace("/\r|\n/", "", $string));
+            $string = str_split($string);
 
             $nbOccCharInStr = 0;
             foreach ($string as $strChar) {
@@ -51,7 +51,7 @@ class Two extends AbstractDay
             [$rule, $char, $string] = explode(' ', $line);
 
             $char = str_replace(':', '', $char);
-            $string = str_split(preg_replace("/\r|\n/", "", $string));
+            $string = str_split($string);
 
             [$first, $last] = explode('-', $rule);
             $first = (int)$first - 1;

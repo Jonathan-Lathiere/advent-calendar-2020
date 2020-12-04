@@ -3,6 +3,7 @@
 namespace App\Day\Three;
 
 use App\Day\AbstractDay;
+use function count;
 
 class Three extends AbstractDay
 {
@@ -12,7 +13,7 @@ class Three extends AbstractDay
     {
         $handle = fopen(__DIR__ . '/data.txt', 'rb+');
         while ($line = fgets($handle)) {
-            $this->inputData[] = $line;
+            $this->inputData[] = trim($line);
         }
     }
 
@@ -40,9 +41,8 @@ class Three extends AbstractDay
         $currentY = 0;
 
         foreach ($this->inputData as $line) {
-            $line = preg_replace("/\r|\n/", "", $line);
             $lineChars = str_split($line);
-            $rowLength = \count($lineChars);
+            $rowLength = count($lineChars);
 
             $currentX += $stepX;
             $currentY += $stepY;
@@ -55,7 +55,7 @@ class Three extends AbstractDay
 
             $charAtSpot = $this->inputData[$currentY][$revisedX];
 
-            if ($charAtSpot === "#"){
+            if ($charAtSpot === "#") {
                 $treesCounted++;
             }
         }
