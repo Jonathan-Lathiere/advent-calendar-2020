@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Day\Four;
+namespace App\Day\Day04;
 
 use App\Day\AbstractDay;
 
-class Four extends AbstractDay
+class Day04 extends AbstractDay
 {
-    public const DAY = 4;
-
     public function configure(): void
     {
         $passportIndex = 0;

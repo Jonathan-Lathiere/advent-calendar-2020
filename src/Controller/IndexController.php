@@ -16,7 +16,7 @@ class IndexController extends AbstractController
     {
         $finder = new Finder();
 
-        $days = $finder->files()->in('../src/Day/*/')->name('*.php');
+        $days = $finder->files()->in('../src/Day/*/')->name('/^Day[\d]{2}\.php$/');
         $daysResults = [];
         foreach ($days as $day) {
             [$dayName, $extension] = explode('.', $day->getFilename());
@@ -27,14 +27,12 @@ class IndexController extends AbstractController
             $firstPuzzleResult = $dayService->firstPuzzle();
             $secondPuzzleResult = $dayService->secondPuzzle();
 
-            $daysResults[$dayService::DAY] = [
-                'day_name' => $dayName,
+            $daysResults[] = [
+                'day_name' => str_replace('Day', '', $dayName),
                 'first_puzzle' => $firstPuzzleResult,
                 'second_puzzle' => $secondPuzzleResult,
             ];
         }
-
-        ksort($daysResults);
 
         return $this->render('index/index.html.twig', [
             'days_results' => $daysResults,

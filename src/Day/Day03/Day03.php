@@ -1,14 +1,12 @@
 <?php
 
-namespace App\Day\Three;
+namespace App\Day\Day03;
 
 use App\Day\AbstractDay;
 use function count;
 
-class Three extends AbstractDay
+class Day03 extends AbstractDay
 {
-    public const DAY = 3;
-
     public function configure(): void
     {
         $handle = fopen(__DIR__ . '/data.txt', 'rb+');

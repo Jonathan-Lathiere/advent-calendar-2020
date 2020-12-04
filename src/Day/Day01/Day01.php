@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Day\One;
+namespace App\Day\Day01;
 
 use App\Day\AbstractDay;
 
-class One extends AbstractDay
+class Day01 extends AbstractDay
 {
-    public const DAY = 1;
     public function configure(): void
     {
         $handle = fopen(__DIR__ . '/data.txt', 'rb+');
