@@ -6,18 +6,20 @@ use App\Day\AbstractDay;
 
 class Two extends AbstractDay
 {
+    public const DAY = 2;
+
     public function configure(): void
     {
         $handle = fopen(__DIR__ . '/data.txt', 'rb+');
         while ($line = fgets($handle)) {
-            $this->dictionnary[] = $line;
+            $this->inputData[] = $line;
         }
     }
 
     public function firstPuzzle()
     {
         $count = 0;
-        foreach ($this->dictionnary as $line) {
+        foreach ($this->inputData as $line) {
             [$rule, $char, $string] = explode(' ', $line);
 
             $char = str_replace(':', '', $char);
@@ -45,7 +47,7 @@ class Two extends AbstractDay
     public function secondPuzzle()
     {
         $count = 0;
-        foreach ($this->dictionnary as $line) {
+        foreach ($this->inputData as $line) {
             [$rule, $char, $string] = explode(' ', $line);
 
             $char = str_replace(':', '', $char);

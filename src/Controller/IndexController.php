@@ -27,11 +27,14 @@ class IndexController extends AbstractController
             $firstPuzzleResult = $dayService->firstPuzzle();
             $secondPuzzleResult = $dayService->secondPuzzle();
 
-            $daysResults[$dayName] = [
+            $daysResults[$dayService::DAY] = [
+                'day_name' => $dayName,
                 'first_puzzle' => $firstPuzzleResult,
                 'second_puzzle' => $secondPuzzleResult,
             ];
         }
+
+        ksort($daysResults);
 
         return $this->render('index/index.html.twig', [
             'days_results' => $daysResults,
